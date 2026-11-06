@@ -6,10 +6,10 @@ import { useScrollReveal } from '../hooks'
 const CONTACT_EMAIL: string | null = null // e.g. 'hello@nexlystudio.com'
 
 // Replace with your real social links when ready:
-const SOCIAL_LINKS: { label: string; href: string | null; icon: string }[] = [
-  // { label: 'Discord', href: 'https://discord.gg/your-invite', icon: 'discord' },
-  // { label: 'Twitter / X', href: 'https://x.com/nexlystudio', icon: 'twitter' },
-  // { label: 'GitHub', href: 'https://github.com/nexlystudio', icon: 'github' },
+const SOCIAL_LINKS: { label: string; href: string | null }[] = [
+  // { label: 'Discord', href: 'https://discord.gg/your-invite' },
+  // { label: 'Twitter / X', href: 'https://x.com/nexlystudio' },
+  // { label: 'GitHub', href: 'https://github.com/nexlystudio' },
 ]
 
 export default function Contact() {
@@ -18,7 +18,7 @@ export default function Contact() {
   return (
     <section id="contact" className="relative py-28 md:py-36">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gradient-radial from-accent-primary/8 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-3xl" style={{ background: 'radial-gradient(ellipse at center, rgba(139,92,246,0.08), transparent)' }} />
       </div>
 
       <div className="max-w-3xl mx-auto px-6">
@@ -74,12 +74,6 @@ export default function Contact() {
           )}
         </div>
       </div>
-
-      <style>{`
-        .bg-gradient-radial {
-          background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
-        }
-      `}</style>
     </section>
   )
 }

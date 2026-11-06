@@ -50,7 +50,6 @@ export default function WhyNexly() {
 
   return (
     <section className="relative py-28 md:py-36 bg-bg-secondary">
-      {/* Subtle top/bottom borders */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 

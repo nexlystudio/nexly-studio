@@ -5,9 +5,8 @@ export default function StudioIntro() {
 
   return (
     <section id="about" className="relative py-28 md:py-36 overflow-hidden">
-      {/* Background accent */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-accent-primary/8 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl" style={{ background: 'radial-gradient(ellipse at center, rgba(139,92,246,0.08), transparent)' }} />
       </div>
 
       <div className="max-w-5xl mx-auto px-6">
@@ -59,12 +58,6 @@ export default function StudioIntro() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        .bg-gradient-radial {
-          background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
-        }
-      `}</style>
     </section>
   )
 }

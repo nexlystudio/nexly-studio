@@ -17,11 +17,8 @@ export default function Hero() {
     >
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Main gradient orb */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-radial from-accent-primary/20 via-accent-secondary/5 to-transparent rounded-full blur-3xl" />
-        {/* Secondary orb */}
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-purple-600/10 to-transparent rounded-full blur-3xl" />
-        {/* Grid pattern */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -29,7 +26,6 @@ export default function Hero() {
             backgroundSize: '60px 60px',
           }}
         />
-        {/* Floating geometric shapes */}
         <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-accent-primary/40 rounded-full animate-float-slow" />
         <div className="absolute top-[30%] right-[20%] w-1.5 h-1.5 bg-accent-secondary/30 rounded-full animate-float-medium" />
         <div className="absolute bottom-[35%] left-[25%] w-1 h-1 bg-purple-400/30 rounded-full animate-float-fast" />
@@ -38,7 +34,6 @@ export default function Hero() {
       </div>
 
       <div className={`relative z-10 max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        {/* Label */}
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-accent-primary/10 border border-accent-primary/20 rounded-full">
           <div className="w-1.5 h-1.5 bg-accent-primary rounded-full animate-pulse" />
           <span className="text-xs font-medium text-accent-primary tracking-widest uppercase">
@@ -46,7 +41,6 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-8">
           <span className="text-text-primary">Technologia zaprojektowana,</span>
           <br />
@@ -55,13 +49,11 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Supporting text */}
         <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-12 leading-relaxed">
           Nexly Studio tworzy nowoczesne, intuicyjne aplikacje, które upraszczają codzienne zadania,
           poprawiają produktywność i zamieniają przydatne pomysły w&nbsp;prawdziwe cyfrowe doświadczenia.
         </p>
 
-        {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#applications"
@@ -81,7 +73,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <ChevronDown size={24} className="text-text-muted" />
       </div>

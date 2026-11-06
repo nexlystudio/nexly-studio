@@ -1,14 +1,14 @@
-import { Shirt, CalendarDays, Heart, Sparkles, LayoutGrid, Palette, Apple, BarChart3, ScanBarcode, BookOpen, Scale, Target, CalendarCheck } from 'lucide-react'
+import { Shirt, CalendarDays, Heart, Sparkles, LayoutGrid, Palette, Apple, BarChart3, ScanBarcode, BookOpen, Scale, Target, CalendarCheck, Download } from 'lucide-react'
 import { useScrollReveal } from '../hooks'
 
 /* ─── Status config ─── */
 type AppStatus = 'in-development' | 'testing' | 'available-soon' | 'available-now'
 
 const STATUS_MAP: Record<AppStatus, { label: string; color: string; dot: string }> = {
-  'in-development': { label: 'W trakcie rozwoju', color: 'text-yellow-400', dot: 'bg-yellow-400' },
-  'testing':        { label: 'Testowanie',        color: 'text-blue-400',   dot: 'bg-blue-400' },
-  'available-soon': { label: 'Wkrótce dostępna',  color: 'text-emerald-400',dot: 'bg-emerald-400' },
-  'available-now':  { label: 'Dostępna',           color: 'text-green-400',  dot: 'bg-green-400' },
+  'in-development': { label: 'W trakcie rozwoju',      color: 'text-yellow-400', dot: 'bg-yellow-400' },
+  'testing':        { label: 'Testowanie',              color: 'text-blue-400',   dot: 'bg-blue-400' },
+  'available-soon': { label: 'Wkrótce dostępna',        color: 'text-emerald-400',dot: 'bg-emerald-400' },
+  'available-now':  { label: 'Pierwsza wersja wydana',  color: 'text-green-400',  dot: 'bg-green-400' },
 }
 
 /* ─── App data ─── */
@@ -23,6 +23,8 @@ interface AppData {
   features: { icon: React.ReactNode; text: string }[]
   cta: string
   ctaHref: string | null
+  /** If set, the CTA becomes a direct APK download button */
+  downloadFile: string | null
 }
 
 const APPS: AppData[] = [
@@ -45,6 +47,7 @@ const APPS: AppData[] = [
     ],
     cta: 'Poznaj Fitcheck',
     ctaHref: null,
+    downloadFile: null,
   },
   {
     name: 'Nexly Nutrition',
@@ -53,7 +56,7 @@ const APPS: AppData[] = [
     description:
       'Nexly Nutrition ułatwia codzienne śledzenie żywienia. Monitoruj kalorie, białko, węglowodany, tłuszcze i inne składniki, organizuj posiłki, zapisuj własne przepisy i obserwuj postępy w realizacji celów żywieniowych — wszystko w jednym przejrzystym miejscu.',
     label: 'TWOJE ŻYWIENIE, UPROSZCZONE',
-    status: 'in-development',
+    status: 'available-now',
     icon: null,
     features: [
       { icon: <Apple size={16} />, text: 'Dzienny monitoring kalorii i makroskładników' },
@@ -61,11 +64,12 @@ const APPS: AppData[] = [
       { icon: <ScanBarcode size={16} />, text: 'Wyszukiwanie produktów po kodzie kreskowym' },
       { icon: <BarChart3 size={16} />, text: 'Własne produkty i osobiste przepisy' },
       { icon: <Scale size={16} />, text: 'Śledzenie wagi i historia postępów' },
-      { icon: <CalendarCheck size={16} />, text: 'Kalendarz z dzienniymi podsumowaniami' },
+      { icon: <CalendarCheck size={16} />, text: 'Kalendarz z dziennymi podsumowaniami' },
       { icon: <Target size={16} />, text: 'Spersonalizowane cele żywieniowe' },
     ],
-    cta: 'Poznaj Nutrition',
+    cta: 'Pobierz Nexly Nutrition',
     ctaHref: null,
+    downloadFile: '/downloads/nexly-nutrition.apk',
   },
 ]
 
@@ -91,7 +95,6 @@ function AppCard({ app, index }: { app: AppData; index: number }) {
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
-      {/* Card inner glow on hover */}
       <div className="absolute inset-0 bg-gradient-to-b from-accent-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div className="relative p-8 md:p-10">
@@ -140,8 +143,17 @@ function AppCard({ app, index }: { app: AppData; index: number }) {
           ))}
         </div>
 
-        {/* CTA */}
-        {app.ctaHref ? (
+        {/* CTA — download button, link, or "coming soon" */}
+        {app.downloadFile ? (
+          <a
+            href={app.downloadFile}
+            download
+            className="group/btn inline-flex items-center gap-2.5 px-7 py-3.5 bg-accent-primary hover:bg-accent-secondary text-white font-medium rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(139,92,246,0.3)] hover:shadow-[0_0_40px_rgba(139,92,246,0.5)] hover:-translate-y-0.5"
+          >
+            <Download size={18} className="transition-transform duration-300 group-hover/btn:translate-y-0.5" />
+            {app.cta}
+          </a>
+        ) : app.ctaHref ? (
           <a
             href={app.ctaHref}
             className="inline-flex items-center gap-2 px-6 py-3 bg-accent-primary/10 border border-accent-primary/30 text-accent-primary hover:bg-accent-primary hover:text-white font-medium rounded-full transition-all duration-300"
@@ -165,7 +177,6 @@ export default function Applications() {
   return (
     <section id="applications" className="relative py-28 md:py-36">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section header */}
         <div
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -178,7 +189,6 @@ export default function Applications() {
           </p>
         </div>
 
-        {/* App cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {APPS.map((app, i) => (
             <AppCard key={app.name} app={app} index={i} />

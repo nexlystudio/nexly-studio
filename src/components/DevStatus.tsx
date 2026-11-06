@@ -11,15 +11,15 @@ interface StatusEntry {
 }
 
 const APP_STATUSES: StatusEntry[] = [
-  { name: 'Nexly Fitcheck', status: 'in-development', icon: <Shirt size={18} /> },
-  { name: 'Nexly Nutrition', status: 'in-development', icon: <Apple size={18} /> },
+  { name: 'Nexly Fitcheck',   status: 'in-development', icon: <Shirt size={18} /> },
+  { name: 'Nexly Nutrition',  status: 'available-now',  icon: <Apple size={18} /> },
 ]
 
 const STATUS_CONFIG: Record<AppStatus, { label: string; color: string; bg: string; dot: string }> = {
-  'in-development': { label: 'W trakcie rozwoju', color: 'text-yellow-400', bg: 'bg-yellow-400/10', dot: 'bg-yellow-400' },
-  'testing':        { label: 'Testowanie',        color: 'text-blue-400',   bg: 'bg-blue-400/10',   dot: 'bg-blue-400' },
-  'available-soon': { label: 'Wkrótce dostępna',  color: 'text-emerald-400',bg: 'bg-emerald-400/10',dot: 'bg-emerald-400' },
-  'available-now':  { label: 'Dostępna',           color: 'text-green-400',  bg: 'bg-green-400/10',  dot: 'bg-green-400' },
+  'in-development': { label: 'W trakcie rozwoju',      color: 'text-yellow-400', bg: 'bg-yellow-400/10', dot: 'bg-yellow-400' },
+  'testing':        { label: 'Testowanie',              color: 'text-blue-400',   bg: 'bg-blue-400/10',   dot: 'bg-blue-400' },
+  'available-soon': { label: 'Wkrótce dostępna',        color: 'text-emerald-400',bg: 'bg-emerald-400/10',dot: 'bg-emerald-400' },
+  'available-now':  { label: 'Pierwsza wersja wydana',  color: 'text-green-400',  bg: 'bg-green-400/10',  dot: 'bg-green-400' },
 }
 
 export default function DevStatus() {
